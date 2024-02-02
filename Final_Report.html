@@ -1,0 +1,3201 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    
+    
+    
+    
+
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>DATA - 601<a rel="noopener" class="anchor-link" href="#DATA---601">&#182;</a></h1><h1>Report:  Analyse the Customer Behaviour On E-Commerce Platforms<a rel="noopener" class="anchor-link" href="#Report:--Analyse-the-Customer-Behaviour-On-E-Commerce-Platforms">&#182;</a></h1><p>Group #2:</p>
+<p>Prashant Dhungana-30080130</p>
+<p>Prateek Kaushik-30229287</p>
+<p>Mariya Mathews-30192182</p>
+<p>Arteen Rafiei-30043409</p>
+<p>Nisha Pillai-30158934</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>Introduction<a rel="noopener" class="anchor-link" href="#Introduction">&#182;</a></h1><p>The retail landscape has undergone a profound transformation over the past decade. Traditional stores have been supplemented and in the majority of cases replaced by online storefronts also known as e-commerce platforms. E-commerce platforms have redefined the way people shop offering variety, convenience, and accessibility. In just a matter of the last two years e-commerce sales increased by 67.5% in the Canadian retail market alone [3]. As the customer demand for more convenient ways of shopping increases, understanding their behavior becomes an essential paramount for businesses to thrive. Thus, the aim of our project is to analyze customer behavior on e-commerce platforms for the sake of customer retention and for the significant growth in ecommerce business. As the use of e-commerce continues to evolve, it becomes important for businesses to conduct strategic methods to understand customer behavior to target and enhance customer experience ultimately correlating with higher sales.</p>
+<p>The primary objective of our project is to analyze and understand attributes and factors that influence customer behavior on e-commerce platforms. The analysis will provide valuable and explicit information regarding customer behavior on e-commerce which is an important insight that businesses can use to improve their services and enhance customer satisfaction.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>Dataset<a rel="noopener" class="anchor-link" href="#Dataset">&#182;</a></h1><p>The dataset selected for undertaking our objective of diving deeper into online customer behavior is a comprehensive collection of customer interactions and purchasing patterns within the leading e-commerce ecosystem [6]. The initial purpose of the author was to find out which customers would churn. Customers who churn, in this context, refers to customers who do not return to the respective e-commerce platform. In essence, the author’s intention with their dataset is similar to our objective.</p>
+<p>This dataset offers a structured and tabular format. It is organized into rows and columns, making it suitable for traditional analysis techniques. Each row represents a unique customer interaction and activity with respect to the e-commerce platform, while each column represents a specific attribute or variable associated with those interactions. It is worth mentioning that there are some missing values which will be explained in more detail in the data cleaning section of the task section. 
+This dataset has 5360 unique values collected from 2019, that is 5360 unique customer interactions, and 20 columns. Each column provides crucial information that can be used for analysis.</p>
+<p>It is important to note that this dataset was initially found through Kaggle[7]. However, this data was collected directly through creativecommon.org with proper permissions and attributions followed. Proper attribution to the original source and contributor is provided to adhere to ethical and legal considerations[6]. (CC BY-NC-SA 4.0)</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>Importing Important Libraries<a rel="noopener" class="anchor-link" href="#Importing-Important-Libraries">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>Part 1. Data Import and understanding<a rel="noopener" class="anchor-link" href="#Part-1.-Data-Import-and-understanding">&#182;</a></h1><p>Then we load the data from &quot;E comm&quot; sheet of excel file using pd.read_excel().Running head gives us a peek of our dataset. Although this doesn’t really tell us much about our data besides showing us how the data looks like.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Data import and understanding</span>
+<span class="n">customer_behaviour_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;E Commerce Dataset.xlsx&quot;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;E Comm&#39;</span><span class="p">)</span>
+<span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CustomerID</th>
+      <th>Churn</th>
+      <th>Tenure</th>
+      <th>PreferredLoginDevice</th>
+      <th>CityTier</th>
+      <th>WarehouseToHome</th>
+      <th>PreferredPaymentMode</th>
+      <th>Gender</th>
+      <th>HourSpendOnApp</th>
+      <th>NumberOfDeviceRegistered</th>
+      <th>PreferedOrderCat</th>
+      <th>SatisfactionScore</th>
+      <th>MaritalStatus</th>
+      <th>NumberOfAddress</th>
+      <th>Complain</th>
+      <th>OrderAmountHikeFromlastYear</th>
+      <th>CouponUsed</th>
+      <th>OrderCount</th>
+      <th>DaySinceLastOrder</th>
+      <th>CashbackAmount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>50001</td>
+      <td>1</td>
+      <td>4.0</td>
+      <td>Mobile Phone</td>
+      <td>3</td>
+      <td>6.0</td>
+      <td>Debit Card</td>
+      <td>Female</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>Laptop &amp; Accessory</td>
+      <td>2</td>
+      <td>Single</td>
+      <td>9</td>
+      <td>1</td>
+      <td>11.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>159.93</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>50002</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>Phone</td>
+      <td>1</td>
+      <td>8.0</td>
+      <td>UPI</td>
+      <td>Male</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>Mobile</td>
+      <td>3</td>
+      <td>Single</td>
+      <td>7</td>
+      <td>1</td>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>120.90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>50003</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>Phone</td>
+      <td>1</td>
+      <td>30.0</td>
+      <td>Debit Card</td>
+      <td>Male</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>Mobile</td>
+      <td>3</td>
+      <td>Single</td>
+      <td>6</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>120.28</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>50004</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>Phone</td>
+      <td>3</td>
+      <td>15.0</td>
+      <td>Debit Card</td>
+      <td>Male</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>Laptop &amp; Accessory</td>
+      <td>5</td>
+      <td>Single</td>
+      <td>8</td>
+      <td>0</td>
+      <td>23.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>134.07</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>50005</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>Phone</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>CC</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>Mobile</td>
+      <td>5</td>
+      <td>Single</td>
+      <td>3</td>
+      <td>0</td>
+      <td>11.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>129.60</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Calling &quot;info()&quot; on our dataset tells us tons of information about our data frame like the shape (rows, columns), the data type of our features, and the memory usage.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 5630 entries, 0 to 5629
+Data columns (total 20 columns):
+ #   Column                       Non-Null Count  Dtype  
+---  ------                       --------------  -----  
+ 0   CustomerID                   5630 non-null   int64  
+ 1   Churn                        5630 non-null   int64  
+ 2   Tenure                       5366 non-null   float64
+ 3   PreferredLoginDevice         5630 non-null   object 
+ 4   CityTier                     5630 non-null   int64  
+ 5   WarehouseToHome              5379 non-null   float64
+ 6   PreferredPaymentMode         5630 non-null   object 
+ 7   Gender                       5630 non-null   object 
+ 8   HourSpendOnApp               5375 non-null   float64
+ 9   NumberOfDeviceRegistered     5630 non-null   int64  
+ 10  PreferedOrderCat             5630 non-null   object 
+ 11  SatisfactionScore            5630 non-null   int64  
+ 12  MaritalStatus                5630 non-null   object 
+ 13  NumberOfAddress              5630 non-null   int64  
+ 14  Complain                     5630 non-null   int64  
+ 15  OrderAmountHikeFromlastYear  5365 non-null   float64
+ 16  CouponUsed                   5374 non-null   float64
+ 17  OrderCount                   5372 non-null   float64
+ 18  DaySinceLastOrder            5323 non-null   float64
+ 19  CashbackAmount               5630 non-null   float64
+dtypes: float64(8), int64(7), object(5)
+memory usage: 879.8+ KB
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>&quot;nunique()&quot; is a method in the pandas library, which is a popular data manipulation and analysis library for Python. It is used to determine the number of unique (distinct) elements in a pandas object, such as a Series or a DataFrame column.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#get the count unique values in each column </span>
+<span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult">
+<pre>CustomerID                     5630
+Churn                             2
+Tenure                           36
+PreferredLoginDevice              3
+CityTier                          3
+WarehouseToHome                  34
+PreferredPaymentMode              7
+Gender                            2
+HourSpendOnApp                    6
+NumberOfDeviceRegistered          6
+PreferedOrderCat                  6
+SatisfactionScore                 5
+MaritalStatus                     3
+NumberOfAddress                  15
+Complain                          2
+OrderAmountHikeFromlastYear      16
+CouponUsed                       17
+OrderCount                       16
+DaySinceLastOrder                22
+CashbackAmount                 2586
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>&quot;dtypes&quot; expression is used in Python with the pandas library to display the data types of each column in a pandas DataFrame</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#check datatype of each column</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Column datatypes : &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>Column datatypes : 
+CustomerID                       int64
+Churn                            int64
+Tenure                         float64
+PreferredLoginDevice            object
+CityTier                         int64
+WarehouseToHome                float64
+PreferredPaymentMode            object
+Gender                          object
+HourSpendOnApp                 float64
+NumberOfDeviceRegistered         int64
+PreferedOrderCat                object
+SatisfactionScore                int64
+MaritalStatus                   object
+NumberOfAddress                  int64
+Complain                         int64
+OrderAmountHikeFromlastYear    float64
+CouponUsed                     float64
+OrderCount                     float64
+DaySinceLastOrder              float64
+CashbackAmount                 float64
+dtype: object
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>By exploring the dataset, we now have a general idea of our dataset and the datatypes.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>Part 2: Data Cleaning<a rel="noopener" class="anchor-link" href="#Part-2:-Data-Cleaning">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>According the Wikipedia, Data Cleaning is the process of detecting and correcting (or removing) corrupt or inaccurate records from a record set, table, or database and refers to identifying incomplete, incorrect, inaccurate or irrelevant parts of the data and then replacing, modifying, or deleting the dirty or coarse data[9].
+From this definition, we can say that the aspects of clean data are: Complete ,Correct ,Accurate, and Relevant.</p>
+<p>Importance: Data cleaning is a crucial step in the data science pipeline as the insights and results you produce is only as good as the data you have. As the old adage goes — garbage in, garbage out.
+Using dirty data to produce analysis will result in erroneous predictions that engenders bad decisions and dangerous outcomes</p>
+<p>Steps we have followed to clean the data is as follows:</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h2>2.1 Drop data that are not useful for Analysis<a rel="noopener" class="anchor-link" href="#2.1-Drop-data-that-are-not-useful-for-Analysis">&#182;</a></h2><p>To begin, we decided to drop certain features or columns from our dataset. Now, this isn&#39;t a recommended practice because it leads to loss of valuable information. However, in our case, we were certain that some columns held no relevance for our analysis. By removing them upfront, before diving into other cleaning methods like filling in missing values, we managed to save a significant amount of time and effort.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Dropping the columns which are not used in the analysis</span>
+<span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CustomerID&quot;</span><span class="p">,</span><span class="s2">&quot;CityTier&quot;</span><span class="p">,</span><span class="s2">&quot;WarehouseToHome&quot;</span><span class="p">,</span><span class="s2">&quot;NumberOfAddress&quot;</span><span class="p">,</span><span class="s2">&quot;OrderAmountHikeFromlastYear&quot;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Churn</th>
+      <th>Tenure</th>
+      <th>PreferredLoginDevice</th>
+      <th>PreferredPaymentMode</th>
+      <th>Gender</th>
+      <th>HourSpendOnApp</th>
+      <th>NumberOfDeviceRegistered</th>
+      <th>PreferedOrderCat</th>
+      <th>SatisfactionScore</th>
+      <th>MaritalStatus</th>
+      <th>Complain</th>
+      <th>CouponUsed</th>
+      <th>OrderCount</th>
+      <th>DaySinceLastOrder</th>
+      <th>CashbackAmount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>4.0</td>
+      <td>Mobile Phone</td>
+      <td>Debit Card</td>
+      <td>Female</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>Laptop &amp; Accessory</td>
+      <td>2</td>
+      <td>Single</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>159.93</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>NaN</td>
+      <td>Phone</td>
+      <td>UPI</td>
+      <td>Male</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>Mobile</td>
+      <td>3</td>
+      <td>Single</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>120.90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>NaN</td>
+      <td>Phone</td>
+      <td>Debit Card</td>
+      <td>Male</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>Mobile</td>
+      <td>3</td>
+      <td>Single</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>120.28</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0.0</td>
+      <td>Phone</td>
+      <td>Debit Card</td>
+      <td>Male</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>Laptop &amp; Accessory</td>
+      <td>5</td>
+      <td>Single</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>134.07</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0.0</td>
+      <td>Phone</td>
+      <td>CC</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>Mobile</td>
+      <td>5</td>
+      <td>Single</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>129.60</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>It is always a good idea to store the column names and keep it handy for further usage</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#get list of columns</span>
+<span class="n">customer_behaviour_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">customer_behaviour_columns</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult">
+<pre>[&#39;Churn&#39;,
+ &#39;Tenure&#39;,
+ &#39;PreferredLoginDevice&#39;,
+ &#39;PreferredPaymentMode&#39;,
+ &#39;Gender&#39;,
+ &#39;HourSpendOnApp&#39;,
+ &#39;NumberOfDeviceRegistered&#39;,
+ &#39;PreferedOrderCat&#39;,
+ &#39;SatisfactionScore&#39;,
+ &#39;MaritalStatus&#39;,
+ &#39;Complain&#39;,
+ &#39;CouponUsed&#39;,
+ &#39;OrderCount&#39;,
+ &#39;DaySinceLastOrder&#39;,
+ &#39;CashbackAmount&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Identifying the number of Null values in each column is required for further cleaning process</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Examine the missing values...........</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Missing values distribution: &quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="c1">#no change needed</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>Missing values distribution: 
+Churn                         0
+Tenure                      264
+PreferredLoginDevice          0
+PreferredPaymentMode          0
+Gender                        0
+HourSpendOnApp              255
+NumberOfDeviceRegistered      0
+PreferedOrderCat              0
+SatisfactionScore             0
+MaritalStatus                 0
+Complain                      0
+CouponUsed                  256
+OrderCount                  258
+DaySinceLastOrder           307
+CashbackAmount                0
+dtype: int64
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Next, we categorize our features into numerical and categorical types</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h2>2.2 Cleaning the categorical data<a rel="noopener" class="anchor-link" href="#2.2-Cleaning-the-categorical-data">&#182;</a></h2><p>Moving on to cleaning the categorical data, our focus was on eliminating duplicates and refining unique values within categorical columns. For instance, in the &#39;Preferred Order Category&#39; column, we found instances where &#39;Mobile&#39; and &#39;Mobile Phone&#39; essentially meant the same thing. We standardized this by replacing &#39;Mobile&#39; with &#39;Mobile Phone&#39;, simplifying our data.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#select the categorical datatype columns</span>
+<span class="n">customer_behaviour_categorical</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">,</span><span class="s2">&quot;object&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">customer_behaviour_categorical</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>Index([&#39;PreferredLoginDevice&#39;, &#39;PreferredPaymentMode&#39;, &#39;Gender&#39;,
+       &#39;PreferedOrderCat&#39;, &#39;MaritalStatus&#39;],
+      dtype=&#39;object&#39;)
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>When you apply the describe() method to categorical columns, it provides details about the total count, the number of unique values, and the category with the highest occurrence along with its frequency.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_categorical</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PreferredLoginDevice</th>
+      <th>PreferredPaymentMode</th>
+      <th>Gender</th>
+      <th>PreferedOrderCat</th>
+      <th>MaritalStatus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5630</td>
+      <td>5630</td>
+      <td>5630</td>
+      <td>5630</td>
+      <td>5630</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>3</td>
+      <td>7</td>
+      <td>2</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>Mobile Phone</td>
+      <td>Debit Card</td>
+      <td>Male</td>
+      <td>Laptop &amp; Accessory</td>
+      <td>Married</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>2765</td>
+      <td>2314</td>
+      <td>3384</td>
+      <td>2050</td>
+      <td>2986</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Understanding each category of every categorical column is important.Below code is written to get details of each category in all the categorical columns.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#showing the unique values in each categorical column </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Categorical Columns with the unique values and counts &quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">customer_behaviour_categorical</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="c1">#Remove the +col**********</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>
+Categorical Columns with the unique values and counts 
+
+
+Mobile Phone    2765
+Computer        1634
+Phone           1231
+Name: PreferredLoginDevice, dtype: int64
+
+
+Debit Card          2314
+Credit Card         1501
+E wallet             614
+UPI                  414
+COD                  365
+CC                   273
+Cash on Delivery     149
+Name: PreferredPaymentMode, dtype: int64
+
+
+Male      3384
+Female    2246
+Name: Gender, dtype: int64
+
+
+Laptop &amp; Accessory    2050
+Mobile Phone          1271
+Fashion                826
+Mobile                 809
+Grocery                410
+Others                 264
+Name: PreferedOrderCat, dtype: int64
+
+
+Married     2986
+Single      1796
+Divorced     848
+Name: MaritalStatus, dtype: int64
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#replacing duplicates in Preferred Order category</span>
+<span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s2">&quot;PreferedOrderCat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s2">&quot;PreferedOrderCat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Mobile&quot;</span><span class="p">,</span><span class="s2">&quot;Mobile Phone&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#In the Preferred Login Device Category, Mobile Phone and Phone are the same.So replacing Phone to Mobile Phone</span>
+<span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s2">&quot;PreferredLoginDevice&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s2">&quot;PreferredLoginDevice&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Phone&quot;</span><span class="p">,</span><span class="s2">&quot;Mobile Phone&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#replacing the duplicates in the PreferredPaymentMode</span>
+<span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s2">&quot;PreferredPaymentMode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s2">&quot;PreferredPaymentMode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;CC&quot;</span><span class="p">:</span><span class="s2">&quot;Credit Card&quot;</span><span class="p">,</span><span class="s2">&quot;COD&quot;</span><span class="p">:</span><span class="s2">&quot;Cash on Delivery&quot;</span><span class="p">})</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h2>2.3 Cleaning numerical data types<a rel="noopener" class="anchor-link" href="#2.3-Cleaning-numerical-data-types">&#182;</a></h2><p>Then came the task of cleaning numerical data types. This involved identifying missing values and replacing them based on the available data points, using either the mean or the median. To make an informed decision between the mean and median, we needed to understand the distribution of the data. This is where histograms came in handy. By studying the shape of the data, we determined its skewness. Ultimately, we chose the median to replace the missing values, ensuring our dataset was not only complete but also accurate and reliable.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Numerical datatype columns</span>
+<span class="n">customer_behaviour_numerical</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">customer_behaviour_numerical</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>Index([&#39;Churn&#39;, &#39;Tenure&#39;, &#39;HourSpendOnApp&#39;, &#39;NumberOfDeviceRegistered&#39;,
+       &#39;SatisfactionScore&#39;, &#39;Complain&#39;, &#39;CouponUsed&#39;, &#39;OrderCount&#39;,
+       &#39;DaySinceLastOrder&#39;, &#39;CashbackAmount&#39;],
+      dtype=&#39;object&#39;)
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_numerical</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Churn</th>
+      <th>Tenure</th>
+      <th>HourSpendOnApp</th>
+      <th>NumberOfDeviceRegistered</th>
+      <th>SatisfactionScore</th>
+      <th>Complain</th>
+      <th>CouponUsed</th>
+      <th>OrderCount</th>
+      <th>DaySinceLastOrder</th>
+      <th>CashbackAmount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5630.000000</td>
+      <td>5366.000000</td>
+      <td>5375.000000</td>
+      <td>5630.000000</td>
+      <td>5630.000000</td>
+      <td>5630.000000</td>
+      <td>5374.000000</td>
+      <td>5372.000000</td>
+      <td>5323.000000</td>
+      <td>5630.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.168384</td>
+      <td>10.189899</td>
+      <td>2.931535</td>
+      <td>3.688988</td>
+      <td>3.066785</td>
+      <td>0.284902</td>
+      <td>1.751023</td>
+      <td>3.008004</td>
+      <td>4.543491</td>
+      <td>177.223030</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.374240</td>
+      <td>8.557241</td>
+      <td>0.721926</td>
+      <td>1.023999</td>
+      <td>1.380194</td>
+      <td>0.451408</td>
+      <td>1.894621</td>
+      <td>2.939680</td>
+      <td>3.654433</td>
+      <td>49.207036</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>145.770000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>9.000000</td>
+      <td>3.000000</td>
+      <td>4.000000</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>163.280000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.000000</td>
+      <td>16.000000</td>
+      <td>3.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>7.000000</td>
+      <td>196.392500</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+      <td>61.000000</td>
+      <td>5.000000</td>
+      <td>6.000000</td>
+      <td>5.000000</td>
+      <td>1.000000</td>
+      <td>16.000000</td>
+      <td>16.000000</td>
+      <td>46.000000</td>
+      <td>324.990000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#understanding the distribution of Tenure,HoursSpendOnApp,CouponUsed ,OrderCount,DaySinceLastOrder to find what method to be used in fillna</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_numerical</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#fill na with medium values since the distribution is skewed distribution</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_numerical</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Retrieving the null value information after the cleaning</span>
+<span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult">
+<pre>Churn                       0.0
+Tenure                      0.0
+PreferredLoginDevice        0.0
+PreferredPaymentMode        0.0
+Gender                      0.0
+HourSpendOnApp              0.0
+NumberOfDeviceRegistered    0.0
+PreferedOrderCat            0.0
+SatisfactionScore           0.0
+MaritalStatus               0.0
+Complain                    0.0
+CouponUsed                  0.0
+OrderCount                  0.0
+DaySinceLastOrder           0.0
+CashbackAmount              0.0
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>Part 3: Data Analysis and Visualization<a rel="noopener" class="anchor-link" href="#Part-3:-Data-Analysis-and-Visualization">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Dividing customer behavior in ecommerce into four main categories—</strong></p>
+<ol>
+<li>Customer Demographic and Preferences</li>
+<li>Customer Behavior and Engagement</li>
+<li>Customer Churn and Retention</li>
+<li>Customer Satisfaction and Feedback</li>
+</ol>
+<p>Provides a structured framework for understanding and analyzing different aspects of customer interactions with online businesses.</p>
+<p>In Customer Demographic and Preferences analysis, businesses gather a wide range of information about their customers, including demographic details like age, gender. Behavioral data, including purchase history, frequency, and shopping preferences, is crucial for predicting customer behavior. Additionally, technographic details like preferred devices and social media usage, along with communication preferences, are collected.</p>
+<p>In the context of customer behavior and engagement, businesses analyze preferred order categories, gender, marital status, purchase frequency, coupons, and cashbacks. Understanding these factors helps in tailoring marketing efforts and promotions, creating personalized experiences, and building customer loyalty. This analysis guides businesses in offering relevant products, targeted discounts, and incentives, ultimately enhancing customer satisfaction and fostering long-term relationships.</p>
+<p>Customer churn involves customers discontinuing their relationship with a company, typically due to dissatisfaction or changing needs. Retention strategies aim to keep customers loyal by providing excellent service and personalized experiences. Analyzing churn patterns helps businesses identify reasons for customer attrition, enabling the implementation of effective retention tactics. Successful customer retention is vital for sustaining a loyal customer base and ensuring long-term business growth.</p>
+<p>Customer satisfaction and feedback involve assessing how content customers are with a company&#39;s products or services. Satisfaction scores measure this contentment, often through ratings or surveys. Tenure ,complaint status examines feedback from long-term customers, highlighting ongoing issues. Both metrics are vital for businesses, enabling them to address concerns, enhance services, and foster lasting customer loyalty.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Customer Demographic and Preferences</strong></p>
+<p>It is a crucial for e-commerce business to analyze customer demograpghics and prefrences to understand how different types of customers behave when shopping online to make data-driven decisions. From this part of the analysis, we hope to create visualizations to understand the customer demographics and prefrences based on our guiding questions below.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-1.1: To what extent does the time spent on the app relate to how frequently customers make purchases (Order count)?</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#does the time spent on the app relate to how frequently customers make purchases (Order count)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;OrderCount&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;HourSpendOnApp&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">customer_behaviour_df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of Hours Spent on App with Order Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Hour Spend on App&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Purchase Frequency(Order Count)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>From the scatterplot visualization alone, we observe a distribution of points that does not suggest strong or clear relationship between the hours spent on app and the purchase frequency. There is not a strong upward or downward trend. However, majority of the data points fall in between the 2 to 4 hours range for time spent and most of the order counts also varies in frequency. This indicates that while some users may place several orders with fewer hours on the app, others might spend a similar amount of time without reflecting the same purchasing behavior. From the scatterplot we can also infer that customers with similar hours spent on the app exhibit different purchasing patterns. Therefore, there may be other influencing factors that may that determine the order count as, the scatterplot does not support the notion that spending more time on the app correlates with an increase in number of orders. This assumption was made only based on the visualization and to provide a more concrete evidence a statistical test is necessary to either support or reject the inferences made above.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-1.2: Is there a notable difference between app usage and purchase frequency, and does this differ significantly between male and female customers?</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Is there a notable difference between app usage and purchase frequency, and does this differ significantly between male and female customers?</span>
+<span class="c1"># Filter relevant columns from the dataset</span>
+<span class="n">distplot_df</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[[</span><span class="s1">&#39;HourSpendOnApp&#39;</span><span class="p">,</span> <span class="s1">&#39;OrderCount&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Create distribution plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">distplot_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;HourSpendOnApp&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">},</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hours Spent on App by Gender&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hours Spent on App&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">distplot_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;OrderCount&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Order Count by Gender&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Order Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>From the stacked histogram on the left comparing the distribution of hour spend on the with genders, we observe that female are spending a little more time on the app usage in comaprison to males. Both genders tend to average around three hours spent on the app on a monthly basis. 
+From the stacked histogram on the right comparing the distribution of order count with genders, we observe that females are having more order count frequency than males even when the number of orders increases . However, we do see one similarity that the order count for both genders are relatively towards the lower end of distribution and the frequency decrease for both genders when the number of order count increases.</p>
+<p>Overall, there are some differences in distribution between the two genders especially in the tails of the distribution, however to make any more infrences it is neceassry to conduct a statistical analysis to provide a more concrete conclusion.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-1.3: How does the choice of preferred login device relate to the amount of time spent on the app?</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[25]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#How does the choice of preferred login device relate to the amount of time spent on the app? Is there a correlation between login device preference and app usage?</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;PreferredLoginDevice&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;HourSpendOnApp&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">customer_behaviour_df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hours Spent on App by Preferred Login Device&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Preferred Login Device&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Hours Spent on App&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>From the shape of the mobile phone violin plot we observe that the shape of the violin stretch extends to the upper end of axis suggesting there are also, users that spend significantly more time on the app. The median is also situated in the lower end suggesting most users tend to be on the lower side of the app usage spectrum. 
+The violin plot for the computer users also indicates that majority of the users spend the same amount of time on the app. However, computer users spread on the violin plot is more condensed suggesting less variability in comparison to the mobile users on the time spent on app.</p>
+<p>From this we can conclude that both mobile phone and computer users average three hours on the app on a monthly basis and form a common pattern. However, there lies a difference in the spread and density distribution between the two groups. Mobile phone users display a wider range of behaviors, including instances of very high usage, which is less common in the computer users.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>From our analysis on Customer Behavior and engagement we gain some valuable insights such that there does not seem to be a strong correlation between the hours spend on the app and order counts as, customer exhibits varied purchasing behaviors based on the visualization. Females were spending more time on the app in comparison to men and showed similar pattern of decrease in frequency as the number of order count increased. Both mobile phone and computer users were avergaing three hours on the app on monthly basis however, mobile users exhibited a wider range of behaviors. Based on the analysis of visualizations above we can strategically prioritize an efficient and user-friendly app design to target most users that prefer shorter interactions.  However, further statistical analysis is needed to understand customer demographics and prefrences and provide more evidence to either support or reject our infrences.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Customer Behavior and Engagement</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-2.1: Are there any patterns forming between Preferred Order category and gender?</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Customer behavior and Engagemnet refers to the actions and decisions customers take when searching for, purchasing, using, and evaluating products or services. It encompasses a wide range of activities, including what customers buy, where they shop, how often they make purchases, the products or services they prefer, and the factors that influence their decisions.</p>
+<p>Before moving on to the next question, let&#39;s familiarize ourselves with the variables we will be focusing on. We will analyze Preferred Order Category, Gender, and Marital Status. Let&#39;s examine the proportions of each category in our dataset.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[26]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create subplots with 1 row and 3 columns</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">preferred_order_cat_counts</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="c1"># Data and labels for PreferredOrderCat Pie Chart</span>
+<span class="n">order_labels</span> <span class="o">=</span> <span class="n">preferred_order_cat_counts</span><span class="o">.</span><span class="n">index</span>
+<span class="n">order_sizes</span> <span class="o">=</span> <span class="n">preferred_order_cat_counts</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># Prefered Order Category Pie Chart</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">order_sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">order_labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set2</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prefered Order Category Distribution&#39;</span><span class="p">)</span>
+
+<span class="n">marital_counts</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;MaritalStatus&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="c1"># Data and labels for Marital Status Pie Chart</span>
+<span class="n">marital_labels</span> <span class="o">=</span> <span class="n">marital_counts</span><span class="o">.</span><span class="n">index</span>
+<span class="n">marital_sizes</span> <span class="o">=</span> <span class="n">marital_counts</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># Marital Status Pie Chart</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">marital_sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">marital_labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set2</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Marital Status Distribution&#39;</span><span class="p">)</span>
+
+
+<span class="n">gender_counts</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="c1"># Data and labels for Gender Pie Chart</span>
+<span class="n">gender_labels</span> <span class="o">=</span> <span class="n">gender_counts</span><span class="o">.</span><span class="n">index</span>
+<span class="n">gender_sizes</span> <span class="o">=</span> <span class="n">gender_counts</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># Category Pie Chart</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">gender_sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">gender_labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set2</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gender Distribution&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>The three pie charts above illustrate the distribution of unique categories within each variable. In the first chart, which represents Preferred Order Category, it becomes evident that &quot;Mobile Phone&quot; and &quot;Laptop and Accessory&quot; are the most preferred categories, accounting for nearly 70% of all orders. Following closely are Fashion, Grocery, and Other categories.</p>
+<p>The second pie chart showcases the distribution of customers based on marital status (Married, Single, and Divorced). Notably, over 50% of the orders come from married individuals, followed by single individuals at approximately 31%, with the lowest contribution from divorced individuals.</p>
+<p>The third pie chart displays the gender distribution. Males account for 60% of the orders, while females make up the remaining 40%.</p>
+<p>Overall, The observed discrepancy in orders for Grocery and Fashion products among married individuals may be influenced by various factors. For example, married consumers might prioritize other categories due to household needs, or they may have different shopping habits and preferences. Further analysis and customer surveys could shed more light on the motivations behind this pattern. Additional research and soliciting customer feedback can offer deeper insights, allowing us to fine-tune our strategies for the purpose of elevating customer satisfaction and enhancing engagement.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[27]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Countplot (Bar plot)</span>
+<span class="c1"># Calculate percentage values for each category</span>
+<span class="n">total_counts</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">gender_counts</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+<span class="n">gender_counts</span><span class="p">[</span><span class="s1">&#39;Percentage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">gender_counts</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total_counts</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Plot the barplot with percentage values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Percentage&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gender_counts</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Preferred Order Category&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Percentage&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relationship between Preferred Order Category and Gender&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>The bar plot demonstrates the correlation between gender and preferred order category. By representing the percentage of male and female users for different categories, we aimed to identify patterns. The analysis reveals similar ordering trends for both genders, yet males consistently outnumber females across all categories. This could be mainly because of the fact that about 60% of the totol consumers are male and only 40% is female.</p>
+<p>Moreover, the data indicates that &quot;Laptop and Accessory&quot; and &quot;Mobile Phone&quot; together contribute to about half of the total market sales, highlighting their significant market presence.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-2.2: Does the preferred order category have any correlation with marital status?</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[28]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate percentage values for each category</span>
+<span class="n">total_counts</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">marital_counts</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">,</span> <span class="s1">&#39;MaritalStatus&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+<span class="n">marital_counts</span><span class="p">[</span><span class="s1">&#39;Percentage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">marital_counts</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total_counts</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Plot the barplot with percentage values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Percentage&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;MaritalStatus&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">marital_counts</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Preferred Order Category&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Percentage&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relationship between Preferred Order Category and Marital Status&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>The grouped bar chart above clearly indicates that married individuals engage in more shopping activities compared to those who are single or divorced. This could be attributed to the fact that married people make up around 50% of the total customer base.</p>
+<p>Additional information that can be inferred is, the prevailing trend continues to favor &quot;Laptop and Accessories&quot; and &quot;Mobile Phone.&quot;</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pivot_table</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;MaritalStatus&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">pivot_table</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGnBu&#39;</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Prefered Order Category&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Marital Status&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Heatmap of Prefered Order Category and Marital Status&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>The heatmap above provides a detailed view of the preferred order count for each category. The prominently highlighted blue columns in the heatmap&#39;s center indicate that &quot;Laptop and Accessory&quot; and &quot;Mobile Phone&quot; are the most favored orders among married individuals. Conversely, divorced individuals place the fewest orders in the &quot;Other&quot; category, and single people also show lower engagement with the &quot;Others&quot; category.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[30]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">treemap</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PreferedOrderCat&#39;</span><span class="p">,</span> <span class="s1">&#39;MaritalStatus&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Treemap Relationship between Prefered Order Category, Marital status and Gender&#39;</span><span class="p">,</span> <span class="n">title_x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output">
+        
+        
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output">
+<div>                            <div class="plotly-graph-div" style="height:525px;width:100%;"></div>                    </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>The treemap above offers a structured perspective of our data, simplifying the identification of patterns like top-selling items. It encompasses all three categories, allowing us to visually grasp the proportion of each category&#39;s count in the dataset and determine specific customer segments to target.</p>
+<p><strong>Conclusion</strong>:  The most preferred order categories remain consistent across all statuses and genders. In essence, our visualizations suggest that shopping preferences are not influenced by gender or marital status, challenging the conventional belief that shopping habits vary significantly between genders. It was particularly intriguing to visulaize that married individuals tend to place more orders for laptops, mobile phones, and accessories compared to their single counterparts.Again this may due to the fact that among total customers, 50% is married. Insights into real customer behavior are invaluable for marketing and advertising strategies, highlighting the importance of recognizing that people generally shop in a gender-neutral manner.</p>
+<p>In light of these insights, to bolster the fashion and grocery sectors, businesses can consider a strategic approach. Expanding the product range within these sectors presents an opportunity to attract a broader customer base. Introducing new product lines, special promotions, and exclusive offerings can effectively entice customers. For instance, in the fashion sector, launching seasonal collections, sustainable clothing lines, or niche product categories could be a promising strategy. Additionally, seeking customer feedback and conducting surveys among those who have previously shopped in these sectors can provide invaluable insights for product selection, pricing, and enhancing the overall shopping experience. Furthermore, implementing loyalty programs and incentives for repeat purchases, such as rewards, discounts, and exclusive offers, can foster customer retention and encourage recurring orders.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-3.1: Do we have any correlation with the number of orders and number of coupons?</strong></p>
+<p>E-commerce businesses are constantly seeking ways to attract and retain customers. One common strategy is offering coupons as incentives to entice customers to make purchases. These incentives are believed to influence customer behavior, but the extent of their impact remains an open question. In this project, we aim to investigate the relationship between the number of orders placed by customers and the coupons they receive for making online purchases in future. Understanding this relationship is crucial for e-commerce businesses as it can help optimize their marketing and incentive strategies.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[31]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">customer_behaviour_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;CashbackAmount&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;CouponUsed&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;OrderCount&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot: Cashback Amount vs. Number of Coupons&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cashback Amount&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Coupons&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of Orders&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Conclusion:</strong> As per the above scatterplot, it is clearly evident that the number of order increases as we move to the right side of the plot wherein number of Coupons increases significantly. In a competitive e-commerce landscape, gaining insights into the impact of coupons can provide a competitive advantage. Businesses can differentiate themselves by offering more attractive incentives. The scatterplot clearly illustrates a positive correlation, where an increase in the number of coupons is associated with a higher number of orders. This suggests that coupons are an effective tool for encouraging customer purchases. This finding underscores the importance of a well-planned marketing strategy that includes the use of coupons. Businesses can consider increasing their coupon offerings or tailoring coupons to specific customer segments to boost sales.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question -3.2 Can we find any relationship between the number of orders and cashback amount received?</strong></p>
+<p>In the dynamic landscape of e-commerce, understanding the intricate web of factors that influence customer behavior is pivotal for the success of online businesses. One of the most enticing and widely used mechanisms for enticing customers to make purchases is the provision of cashback incentives. Cashback, in essence, offers a direct monetary return to the customer for their purchases. This prompts a fundamental inquiry: can we identify a discernible relationship between the number of orders placed by customers and the CashbackAmount received?</p>
+<p>The pursuit of this question is of significant importance for e-commerce businesses aiming to enhance their marketing strategies, retain customers, and maximize revenue. In this project, we embark on an exploration to unveil whether a connection exists between the number of orders and the CashbackAmount, a monetary incentive, customers receive. By shedding light on this relationship, we equip e-commerce platforms with valuable insights to refine their marketing and incentive strategies, ultimately fostering sustainable growth and a competitive edge in the digital marketplace.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[32]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Number of Orders&#39;</span><span class="p">:</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;OrderCount&#39;</span><span class="p">],</span> <span class="s1">&#39;Cashback Amount&#39;</span><span class="p">:</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;CashbackAmount&#39;</span><span class="p">]})</span>
+
+<span class="c1"># Create a scatterplot with a regression line</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Number of Orders&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Cashback Amount&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_data</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;skyblue&#39;</span><span class="p">},</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;brown&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Regression Plot of OrderCount vs. Cashback Amount&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Conclusion:</strong> Leveraging data-driven insights to understand the intricate relationship between two key variables, the number of orders and the CashbackAmount received, is paramount for e-commerce businesses. In our pursuit of illuminating this relationship, we turn to one of the most powerful data visualization tools at our disposal, the regression plot.</p>
+<p>The regression plot analysis demonstrates a clear and direct relationship between the number of orders and the CashbackAmount received by customers on the e-commerce platform. This relationship suggests that as the number of orders increases, the CashbackAmount also increases proportionally. This insight has significant implications for our business, shedding light on how cashback incentives influence customer behavior.The regression line also serves as a predictive model. It allows us to estimate the CashbackAmount a customer is likely to receive based on the number of orders they place. This predictive power is invaluable for making data-driven decisions. It exemplifies the power of data-driven decision making. By analyzing the relationship between the number of orders and CashbackAmount, we can make informed choices regarding our cashback policies and marketing strategies.</p>
+<p>Cashback incentives are not only associated with higher order volumes but also enhance customer engagement with the ecommerce platform. Customers perceive added value in these incentives, which can foster loyalty and repeat purchases. Further statistical tests can be conducted to quantify the strength of this relationship and provide even more precise insights.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Let&#39;s investigate whether the combined effects of CouponUsage and CashbackAmount influence the OrderCount.</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[33]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span>
+    <span class="n">customer_behaviour_df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;CouponUsed&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;CashbackAmount&#39;</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="s1">&#39;OrderCount&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;OrderCount&#39;</span><span class="p">,</span>  <span class="c1"># Color points by OrderCount</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>          <span class="c1"># Set opacity for better visibility</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;3D Scatter Plot: OrderCount vs. CouponUsed vs. CashbackAmount&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Customize axis labels</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">scene</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;CouponUsed&#39;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;CashbackAmount&#39;</span><span class="p">,</span> <span class="n">zaxis_title</span><span class="o">=</span><span class="s1">&#39;OrderCount&#39;</span><span class="p">))</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output">
+<div>                            <div class="plotly-graph-div" style="height:525px;width:100%;"></div>                    </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Conclusion</strong> The 3D scatter plot provides a comprehensive view of the interplay between CashbackAmount, CouponsCount, and OrderCount, offering insights into how these factors collectively influence customer behavior on our e-commerce platform. The plot highlights the positive relationships between these variables, revealing key patterns that can shape our business strategies.</p>
+<p>The plot vividly illustrates the direct relationships between the three variables. As OrderCount increases, both CashbackAmount and CouponsCount tend to increase as well. This is a powerful indicator that our cashback and coupon strategies are effective in enticing customers to place more orders. This 3D perspective reveals segmentation opportunities. Customers exhibiting certain behaviors, such as placing a high number of orders, may be particularly responsive to cashback and coupons. We can tailor our marketing strategies to target and retain these customer segments.</p>
+<p>CashbackAmount and CouponsCount are not just about boosting transactions, they also contribute to enhancing customer loyalty and repeated engagement with the platform. The 3D visual representation emphasizes the holistic impact of these incentives and effectiveness of these promotional tactics, motivating customers to not only order more frequently but also spend more. Further statistical analysis can be pursued to quantify the strength of these relationships and guide more precise strategies.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Customer Churn and Retention</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>A crucial aspect of this project involves assessing customer satisfaction with the e-commerce website and how it influences a customer&#39;s choice to remain loyal or switch to a competitor. Losing a customer to a rival can have a detrimental effect on the e-commerce website&#39;s business. Hence, ensuring customer retention is essential for the organization.</p>
+<p>To conduct this analysis, it&#39;s imperative to comprehend the three key parameters that contribute to this situation, namely Satisfaction Score, Complaints, and Churn.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-4.1: Satisfaction score</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[34]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#define data for 1st pie of satisfaction score</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;SatisfactionScore&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;No Satisfaction&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Satisfaction&#39;</span><span class="p">,</span> <span class="s1">&#39;Average Satisfaction&#39;</span><span class="p">,</span><span class="s1">&#39;Good level of Satisfaction&#39;</span><span class="p">,</span> <span class="s1">&#39;Highest Satisfaction&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;Spectral&quot;</span><span class="p">)</span>  <span class="c1"># You can choose a different color palette.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{:.1f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">)),</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+ 
+<span class="c1"># Add a title to the chart.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SATISFACTION SCORE DISTRIBUTION&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the pie chart.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>  <span class="c1"># Equal aspect ratio ensures that the pie chart is circular.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>The data on customer satisfaction scores can be represented through a pie chart. This chart reveals that 10% of customers have a satisfaction score of 5, indicating the highest level of satisfaction. Conversely, 30% of customers exhibit the lowest level of satisfaction, with the average satisfaction level falling within the 20% range. This suggests the need to address the customer satisfaction parameter to enhance satisfaction levels, particularly as a larger concentration of customers falls within the lower satisfaction range.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-4.2: Complaint and Churn rate</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a 1x2 grid of subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1">#define data for 1st pie of Complain</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Complain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">labels1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;No Complaints&#39;</span><span class="p">,</span> <span class="s1">&#39;Registered Complaint&#39;</span><span class="p">]</span>
+<span class="n">sizes1</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels1</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;COMPLAIN DISTRIBUTION&#39;</span><span class="p">)</span>
+
+<span class="c1">#define data for 2nd pie of Churn</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Churn&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">labels2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Customers Retained&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers lost&#39;</span><span class="p">]</span> <span class="c1"># 0 as &quot;Customer Retained&quot; and 1 as &quot;Customer Lost.&quot;</span>
+<span class="n">sizes2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes2</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels2</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CHURN DISTRIBUTION&#39;</span><span class="p">)</span>
+
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;Spectral&quot;</span><span class="p">)</span>  <span class="c1"># You can choose a different color palette.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Display the pie chart.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>In our analysis of registered complaints and customer churn rates, the pie charts provide valuable insights. Despite 28.5% of customers having lodged complaints, only 16.8% have chosen to depart, while a significant 83.2% of the customer base has been retained. This analysis suggests an important behavioral pattern: registering a complaint does not necessarily result in a customer leaving the e-commerce platform. It is highly likely that customer complaints were addressed effectively, contributing to a favorable retention rate.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-4.3: What is the correlation of satisfaction score and complaints with the churn rate?</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[36]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#SATISFACTION SCORES OF CUSTOMERS WHO HAD COMPLAINS AND WERE LOST TO COMPETITION</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">churned_customers_with_complaints</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Churn&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Complain&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">churned_customers_without_complaints</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Churn&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Complain&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+
+<span class="c1"># Set the style for the plot (optional)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a countplot or barplot to show the distribution of satisfaction scores</span>
+<span class="c1">#plt.figure(figsize=(8, 6))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;rocket&quot;</span><span class="p">)</span>  
+
+<span class="c1">#SATISFACTION SCORES OF CUSTOMERS WHO HAD COMPLAINS AND WERE LOST TO COMPETITION</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">churned_customers_with_complaints</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;SatisfactionScore&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Graph A-Satisfaction score of Churned customers who had Complaints&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Satisfaction Score&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+
+<span class="c1">#SATISFACTION SCORES OF CUSTOMERS WHO HAD NO COMPLAINS AND WERE LOST TO COMPETITION</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">churned_customers_without_complaints</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;SatisfactionScore&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Graph B-Satisfaction score of Churned customers who had NO Complaints&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Satisfaction Score&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>The aforementioned analysis sheds light on the guiding question: Does the level of customer satisfaction and the complaints they register correlate with their decision to churn from the e-commerce platform?</p>
+<p>Graph A illustrates the customers who have raised complaints and subsequently churned. It&#39;s noteworthy that most of these customers fall within the average satisfaction bracket. One potential reason for their decision to churn might be a delay in or unsatisfactory resolution of their complaints. These are the customers who could potentially be retained by enhancing customer service.</p>
+<p>Graph B, on the other hand, depicts customers who haven&#39;t registered any complaints and have a satisfaction score ranging from 3 to 5, indicating they are fairly satisfied. Nevertheless, they choose to churn from the e-commerce website. This decision might be attributed to factors such as finding better prices elsewhere or the unavailability of their desired products on our platform. To delve deeper into this issue, gathering the reasons for churn directly from the customers can be considered in future.</p>
+<p>Hence, while customer satisfaction scores and complaints can be contributing factors in a customer&#39;s decision to churn, they are not the sole determinants. Other factors may also influence this decision, and future project scope could involve adding new survey questions to explore these additional factors contributing to churn.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Customer Satisfaction and Feedback</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Question-5: Does tenure have an impact on satisfaction scores and the number of complaints raised?</strong></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[37]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0 months&#39;</span><span class="p">,</span> <span class="s1">&#39;1-6 months&#39;</span><span class="p">,</span> <span class="s1">&#39;6-12 months&#39;</span><span class="p">,</span> <span class="s1">&#39;12-18 months&#39;</span><span class="p">,</span> <span class="s1">&#39;18-24 months&#39;</span><span class="p">,</span> <span class="s1">&#39;24-36 months&#39;</span><span class="p">,</span> <span class="s1">&#39;36+ months&#39;</span><span class="p">]</span>
+<span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Tenure&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Tenure&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of Tenure&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tenure (months)&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of Tenure Bins&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tenure (months)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Finally, let’s investigate if Tenure has an Impact on Satisfaction Scores or Complaints Raised</p>
+<p>Taking a look at the distribution of tenure, we notice a pattern where a large majority of e-commerce customers seem to be newer members. Most customers have only been on the platform for less than a month. If we look at the distribution of tenure, separated by six month intervals, we can see most customers have been members for less than 12 months. Very few go beyond 36 months, however, this could be due to the recency of data collection.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[38]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">complain_palette</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">}</span>
+
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Tenure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">)]</span>
+
+<span class="n">pivot</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Tenure&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Complain&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pivot_proportions</span> <span class="o">=</span> <span class="n">pivot</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">bottom_proportion</span> <span class="o">=</span> <span class="n">pivot_proportions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">top_proportion</span> <span class="o">=</span> <span class="n">pivot_proportions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">pivot_proportions</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">bottom_proportion</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">complain_palette</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;No Complaint&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">pivot_proportions</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">top_proportion</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="n">bottom_proportion</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">complain_palette</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Complaint&#39;</span><span class="p">)</span>
+
+<span class="n">int_ticks</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">tick</span><span class="p">)</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">()]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="n">labels</span><span class="o">=</span><span class="n">int_ticks</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Complaint Status&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Proportion of Customers by Tenure (0 to 31 months) and Complaint Status&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tenure (months)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Here a bar graph has been implemented to compare a customer&#39;s complaint status with tenure. The key takeaway here are the proportions observed of customers without complaints vs customers with complaints with respect to tenure. From this visualization we can see that the rate of complaints in general is lower than no complaints. But interestingly, those who are most vocal are on the tails, meaning newer members and veteran members have higher proportions of complaints. The proportion of complaints of customers between the extremes show roughly similar proportions.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[39]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">filtered_df</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;36+ months&#39;</span><span class="p">]</span>
+
+<span class="n">total_per_bin</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">,</span> <span class="s1">&#39;SatisfactionScore&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<span class="n">proportions</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">total_per_bin</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">bottom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">proportions</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">proportions</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">proportions</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">proportions</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">bottom</span><span class="o">=</span><span class="n">bottom</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Score </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">5</span><span class="p">)[</span><span class="n">column</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">bottom</span> <span class="o">+=</span> <span class="n">proportions</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tenure&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Proportion&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Proportions of Customers by Tenure Bins and Satisfaction Score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Satisfaction Score&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>Now to investigate the relationship between tenure and satisfaction scores, we divide tenure into different bins divided into 6 month intervals, starting at 0 months where each tenure bin displays the proportions of satisfaction scores, 1 being a low score and 5 being a high score. The purpose of this is to track rating patterns based on tenure. We noticed that in general, no matter what the tenure of a customer is, the patterns/proportions are roughly the same. We might be able to infer that customers who have been on the platform for less than a month are more generous with the 5 star reviews. We can also infer the most common score among all tenure bins is the average score of 3 and the least common is a score of 2.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[40]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">complaint_0</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Complain&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">complaint_1</span> <span class="o">=</span> <span class="n">customer_behaviour_df</span><span class="p">[</span><span class="n">customer_behaviour_df</span><span class="p">[</span><span class="s1">&#39;Complain&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">complaint_0</span> <span class="o">=</span> <span class="n">complaint_0</span><span class="p">[</span><span class="n">complaint_0</span><span class="p">[</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;36+ months&#39;</span><span class="p">]</span>
+<span class="n">complaint_1</span> <span class="o">=</span> <span class="n">complaint_1</span><span class="p">[</span><span class="n">complaint_1</span><span class="p">[</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;36+ months&#39;</span><span class="p">]</span>
+
+<span class="n">total_per_bin_0</span> <span class="o">=</span> <span class="n">complaint_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">counts_0</span> <span class="o">=</span> <span class="n">complaint_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">,</span> <span class="s1">&#39;SatisfactionScore&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<span class="n">proportions_0</span> <span class="o">=</span> <span class="n">counts_0</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">total_per_bin_0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">total_per_bin_1</span> <span class="o">=</span> <span class="n">complaint_1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">counts_1</span> <span class="o">=</span> <span class="n">complaint_1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Tenure_bins&#39;</span><span class="p">,</span> <span class="s1">&#39;SatisfactionScore&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<span class="n">proportions_1</span> <span class="o">=</span> <span class="n">counts_1</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">total_per_bin_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">bottom_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">proportions_0</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">proportions_0</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">proportions_0</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">proportions_0</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">bottom</span><span class="o">=</span><span class="n">bottom_0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Score </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">bottom_0</span> <span class="o">+=</span> <span class="n">proportions_0</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;No Complaint&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tenure (months)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="n">bottom_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">proportions_1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">proportions_1</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">proportions_1</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">proportions_1</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">bottom</span><span class="o">=</span><span class="n">bottom_1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Score </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">bottom_1</span> <span class="o">+=</span> <span class="n">proportions_1</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Complaint&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tenure (months)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Satisfaction Score&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p>In order to have a deeper understanding of the relationship between all three attributes, we have divided the same visualization in two, one showing customers without complaints and one with complaints. By doing this, we can determine if complaint status has any effect on one’s satisfaction score with respect to tenure. When comparing the two, we can infer that customers who have not filed a complaint tend to score higher (4 or 5), especially customers whose tenure has been more recent. We also notice that customers who have complained tend to have a higher proportion of giving a score of 1. Interestingly, the most veteran customers who have not complained seem to score lower than the veteran customers who have complained, which appears to be contrary to the observed trend.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>Conclusion of the Report</strong></p>
+<p>In our exploration of customer behavior on our e-commerce platform, our analysis has unveiled valuable insights that can guide our business strategies. It is essential to emphasize that our conclusions are primarily drawn from visualizations, and to solidify these insights, conducting in-depth statistical analyses is a crucial next step. Here, we summarize the key takeaways from our visualizations:</p>
+<p><strong>Customer Engagement and App Usage:</strong></p>
+<p>We found that both mobile phone and computer users spend, on average, approximately three hours on our app each month. This insight provides a valuable baseline for user engagement metrics and helps us understand the time users invest in our platform.</p>
+<p><strong>Customer Engagement and Preferred Order Category:</strong></p>
+<p>Our visual analysis revealed that &quot;Laptop and Accessories&quot; as well as &quot;Mobile Phones&quot; are the most favored categories across all genders and marital statuses. This information will assist the marketing team in identifying the least popular categories, allowing them to focus their efforts on boosting sales in those areas.</p>
+<p><strong>Coupons and Cashback Strategies:</strong></p>
+<p>The relationship between the number of coupons and the number of orders is clearly evident. The scatterplot showcases a positive correlation, implying that coupons are effective in encouraging customer purchases. This observation underscores the importance of well-crafted marketing strategies that include the use of coupons. By tailoring coupons to specific customer segments and increasing their offerings, we can boost sales and customer engagement.</p>
+<p><strong>3D Scatter Plot Insights:</strong></p>
+<p>Our 3D scatter plot masterfully illustrates the interplay between CashbackAmount, CouponsCount, and OrderCount. The plot illuminates direct and proportional relationships among these variables, underlining the efficacy of our cashback and coupon strategies. Additionally, this 3D perspective uncovers segmentation opportunities for tailoring marketing strategies to specific customer behaviors.</p>
+<p><strong>Churn Factors and Customer Satisfaction:</strong></p>
+<p>We discovered that customer satisfaction scores and complaint status are not the sole determinants of customer churn. Other factors likely influence customer behavior, demanding further investigation. We also observed that a customer&#39;s tenure does not significantly affect their satisfaction score, but there&#39;s a correlation indicating that newer and veteran members have a higher probability of raising complaints. These findings hint at opportunities for enhancing customer experience and retention.</p>
+<p><strong>Overall Summary:</strong></p>
+<p>Our analysis underscores the importance of offering gender-neutral products to match customer preferences for a user-friendly environment. We&#39;ve learned that customer benefits, such as coupons and cashback, play a pivotal role in encouraging customer orders and enhancing loyalty. Customer tenure does not significantly impact satisfaction scores, but tenure-based patterns reveal areas for improvement. Understanding these attributes equips us with insights for future visualizations and helps us strategize marketing efforts on our e-commerce platform.
+In conclusion, our visual analysis has laid the foundation for data-driven decision-making, and further statistical analyses will provide more robust evidence to support our findings. Our findings demonstrate the potential for optimizing marketing strategies, enhancing customer engagement, and fostering long-term customer relationships in the competitive e-commerce landscape.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<p><strong>References</strong></p>
+<p>[1]Al Karim, R. (2013). Customer Satisfaction in Online Shopping: a study into the reasons for motivations and inhibitions. IOSR Journal of Business and Management, 11(6), 13-20.</p>
+<p>[2]Arvai, Kevincommerce (2023, August 4). “K-mean Clustering in Python:  A Practical Guide.”<a rel="noopener" href="https://realpython.com/k-means-clustering-python/">https://realpython.com/k-means-clustering-python/</a></p>
+<p>[3]Countants. (2020, January 5). Why consumer behavior analysis is so relevant to the ecommerce business? Medium <a rel="noopener" href="https://medium.datadriveninvestor.com/why-consumer-behavior-analysis-is-so-relevant-to-the-ecommerce-business-8f49c250ca9c">https://medium.datadriveninvestor.com/why-consumer-behavior-analysis-is-so-relevant-to-the-ecommerce-business-8f49c250ca9c</a></p>
+<p>[4]Dale, K. (2022). Data Visualization with Python and JavaScript. &quot; O&#39;Reilly Media, Inc.&quot;.</p>
+<p>[5]“Data Cleansing.” Wikipedia, (n.d). <a rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Data_cleansing&amp;oldid=1173211069">https://en.wikipedia.org/w/index.php?title=Data_cleansing&amp;oldid=1173211069</a>.</p>
+<p>[6] ‘Data visualization in python: overview, libraries &amp; graphs | simplilearn’, Simplilearn.com. Available: <a rel="noopener" href="https://www.simplilearn.com/tutorials/python-tutorial/data-visualization-in-python">https://www.simplilearn.com/tutorials/python-tutorial/data-visualization-in-python</a>. [Accessed: Oct. 01, 2023]</p>
+<p>[7]“Ecommerce - Canada: Statista Market Forecast.” Statista. (n.d). <a rel="noopener" href="https://www.statista.com/outlook/dmo/ecommerce/canada">https://www.statista.com/outlook/dmo/ecommerce/canada</a>.</p>
+<p>[8]Hasslinger, A., Hodzic, S., &amp; Opazo, C. (2008). Consumer behaviour in online shopping.</p>
+<p>[9]Matplotlib. plot(x, y) - Matplotlib 3.8.0 documentation. (n.d.). <a rel="noopener" href="https://matplotlib.org/stable/plot_types/basic/plot.html">https://matplotlib.org/stable/plot_types/basic/plot.html</a></p>
+<p>[10]Predoiu, O. (2023, September 21). Customer behavior analysis. Omniconvert Ecommerce Growth Blog. <a rel="noopener" href="https://www.omniconvert.com/blog/customer-behavior-analysis/">https://www.omniconvert.com/blog/customer-behavior-analysis/</a></p>
+<p>[11]S. Burt and L. Sparks, ‘E-commerce and the retail process: a review’, Journal of Retailing and Consumer Services, vol. 10, no. 5, pp. 275–286, Sep. 2003, doi: 10.1016/S0969-6989(02)00062-0. Available: <a rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0969698902000620">https://www.sciencedirect.com/science/article/pii/S0969698902000620</a>. [Accessed: Oct. 02, 2023]</p>
+<p>[12]Verma, Ankit.(2023, July 6). “E-commerce Dataset.” (CC BY-NC-SA 4.0) creativecommon.org  <a rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+<p>[13]Verma,(2021, January 26) A. Ecommerce customer churn analysis and prediction. Kaggle. <a rel="noopener" href="https://www.kaggle.com/datasets/ankitverma2010/ecommerce-customer-churn-analysis-and-prediction">https://www.kaggle.com/datasets/ankitverma2010/ecommerce-customer-churn-analysis-and-prediction</a></p>
+<p>[14]Zanzana, Salim, and Jessica Martin. (2023, February 21). Retail e-commerce and COVID-19: How online sales evolved as in-person shopping resumed. <a rel="noopener" href="https://www150.statcan.gc.ca/n1/pub/11-621-m/11-621-m2023002-eng.htm">https://www150.statcan.gc.ca/n1/pub/11-621-m/11-621-m2023002-eng.htm</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<script type="module" src="https://s.brightspace.com/lib/bsi/20.24.1-233/unbundled/mathjax.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					if (document.querySelector('math') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
+						document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
+							elm.setAttribute('style', 'display: block; height: 0.5rem;');
+						});
+
+						window.D2L.MathJax.loadMathJax({
+							'outputScale': 1,
+							'renderLatex': false
+						});
+					}
+				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/20.24.1-233/unbundled/prism.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					document.querySelectorAll('.d2l-code').forEach(code => {
+						window.D2L.Prism.formatCodeElement(code);
+					});
+				});</script></body></html>
